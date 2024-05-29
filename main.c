@@ -6,12 +6,11 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 22:21:01 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/05/27 23:10:09 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/05/30 02:17:34 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
 #include "mlx.h"
 
 // Full HD

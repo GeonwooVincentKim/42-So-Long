@@ -40,7 +40,7 @@
 # .PHONY: all clean fclean re
 NAME=so_long
 CFLAGS=-Wall -Wextra -Werror
-SRCS=src/main.c
+SRCS=main.c
 OBJS=$(SRCS:.c=.o)
 
 MINILIBX_DIR := ./minilibx_opengl
