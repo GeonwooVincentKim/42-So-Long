@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:11:12 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/05/30 02:50:11 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/03 20:18:11 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	newarray = (char *)malloc(len_s1 + 1);
 	if (!newarray)
 		return (NULL);
-	// ft_strlcpy(newarray, (char *)s1, len_s1 + 1);
+	ft_strlcpy(newarray, (char *)s1, len_s1 + 1);
 	return (newarray);
 }
