@@ -1,5 +1,5 @@
 *.o
-*._minilibx_opengl
+minilibx_opengl_20191021/
 sample
 so_long
 so_long.exe
