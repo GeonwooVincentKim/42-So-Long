@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:16:56 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/04 01:11:35 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/04 02:05:56 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,18 @@ static void	move_enemy(t_game *g)
 	}
 }
 
-// static void	animate(t_game *g)
-// {
-// 	void	*tmp;
+static void	animate(t_game *g)
+{
+	void	*tmp;
 
-// 	tmp = g->c;
-// 	g->c = g->c2;
-// 	g->c2 = tmp;
-// 	if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'C')
-// 		g->p = g->p3;
-// 	else
-// 		g->p = g->p2;
-// }
+	tmp = g->c;
+	g->c = g->c2;
+	g->c2 = tmp;
+	if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'C')
+		g->p = g->p3;
+	else
+		g->p = g->p2;
+}
 
 void	end_game(t_game *g)
 {
@@ -75,6 +75,7 @@ void	move(t_game *g)
 		end_game(g);
 	g->lines[g->player.actual.y][g->player.actual.x] = '0';
 	move_enemy(g);
+	animate(g);
 	if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'C')
 		g->player.c += 1;
 	else if (g->lines[g->player.attempt.y][g->player.attempt.x] == 'E' \
