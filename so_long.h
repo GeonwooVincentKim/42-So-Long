@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 22:26:15 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 20:06:30 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/04 01:07:33 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,15 @@ typedef struct s_game
 
 /* get_next_line.c */
 char	*get_next_line(int fd);
+// size_t	ft_strlcpy(char *dest, const char *src, size_t dest_size);
+// void	*ft_memset(void *ptr, int x, size_t n);
+
+// // get_next_line_utils.c
+// char	*ft_strchr(const char *str, int c);
+// char	*ft_substr(const char *str, unsigned int start, size_t len);
+// size_t	ft_strlen(const char *str);
+// char	*ft_strjoin(const char *s1, const char *s2);
+// char	*ft_strdup(const char *s);
 
 /* validate.c */
 int		is_valid_map(char *file, t_map *map);

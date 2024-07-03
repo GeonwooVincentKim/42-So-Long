@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:18:58 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 20:47:23 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/04 00:38:54 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ static int	key_hook(int keycode, t_game *g)
 	return (0);
 }
 
+__attribute__((destructor))
+static void destructor() {
+    system("leaks -q so_long");
+}
+
 int	main(int argc, char **argv)
 {
 	char	*moves;
@@ -69,9 +74,10 @@ int	main(int argc, char **argv)
 		mlx_key_hook(g.win, key_hook, &g);
 		mlx_loop(g.mlx);
 	}
-	else if (argc == 2 && ft_atoi(argv[1]))
-		ft_putendl_fd("Error", 2);
 	else
 		ft_putendl_fd("Error", 2);
 	return (0);
 }
+
+//	else if (argc == 2 && ft_atoi(argv[1]))
+// ft_putendl_fd("Error", 2);?

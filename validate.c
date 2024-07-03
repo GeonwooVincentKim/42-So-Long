@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 19:03:42 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 19:03:45 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/03 22:06:36 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static int	is_rectangular_and_cep(char *file, t_map *map)
 
 	i = 0;
 	line = get_next_line(fd);
+	if (!line)
+		return (0);
 	while (line && ++i)
 	{
 		if (i == 1)

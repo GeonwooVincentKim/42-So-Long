@@ -3,7 +3,7 @@ SOURCES = so_long.c get_next_line.c validate.c setup_game.c play_game.c
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 
@@ -11,10 +11,10 @@ bonus: $(NAME)
 
 $(NAME): $(OBJECTS) minilibx libft
 	gcc -o $@ $(OBJECTS) -Lminilibx_opengl -lmlx -Llibft -lft \
-		-framework OpenGL -framework AppKit -lz
+		-framework OpenGL -framework AppKit -lz -g
 
 %.o: %.c
-	$(CC) -c $(CFLAGS) $?
+	$(CC) -c -g $?
 
 minilibx:
 	make -C minilibx_opengl

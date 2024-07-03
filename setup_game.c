@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:17:22 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 20:47:19 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/04 01:08:57 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ void	init_lines_and_images(char *file, t_game *g)
 	}
 	ret[i] = 0;
 	g->lines = ret;
-	g->o = mlx_png_file_to_image(g->mlx, "png/o.png", &g->map.px, &g->map.px);
-	g->c = mlx_png_file_to_image(g->mlx, "png/c1.png", &g->map.px, &g->map.px);
-	g->c2 = mlx_png_file_to_image(g->mlx, "png/c2.png", &g->map.px, &g->map.px);
-	g->e = mlx_png_file_to_image(g->mlx, "png/e.png", &g->map.px, &g->map.px);
-	g->p2 = mlx_png_file_to_image(g->mlx, "png/p1.png", &g->map.px, &g->map.px);
-	g->p3 = mlx_png_file_to_image(g->mlx, "png/p2.png", &g->map.px, &g->map.px);
+	g->o = mlx_xpm_file_to_image(g->mlx, "xpm/o.xpm", &g->map.px, &g->map.px);
+	g->c = mlx_xpm_file_to_image(g->mlx, "xpm/c1.xpm", &g->map.px, &g->map.px);
+	g->c2 = mlx_xpm_file_to_image(g->mlx, "xpm/c2.xpm", &g->map.px, &g->map.px);
+	g->e = mlx_xpm_file_to_image(g->mlx, "xpm/e.xpm", &g->map.px, &g->map.px);
+	g->p2 = mlx_xpm_file_to_image(g->mlx, "xpm/p1.xpm", &g->map.px, &g->map.px);
+	g->p3 = mlx_xpm_file_to_image(g->mlx, "xpm/p2.xpm", &g->map.px, &g->map.px);
 	g->p = g->p2;
-	g->v = mlx_png_file_to_image(g->mlx, "png/v.png", &g->map.px, &g->map.px);
+	g->v = mlx_xpm_file_to_image(g->mlx, "xpm/v.xpm", &g->map.px, &g->map.px);
 }
 
 void	init_enemies(t_game *g)

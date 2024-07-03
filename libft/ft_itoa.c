@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:09:32 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 20:26:07 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/04 00:12:35 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_itoa(int n)
 	len = ft_numlen(n);
 	str = (char *)malloc((len + 1));
 	number = n;
-	if (!(str))
+	if (!str)
 		return (NULL);
 	str[len] = '\0';
 	len--;
