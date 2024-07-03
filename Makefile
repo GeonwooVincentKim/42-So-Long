@@ -10,21 +10,21 @@ all: $(NAME)
 bonus: $(NAME)
 
 $(NAME): $(OBJECTS) minilibx libft
-	gcc -o $@ $(OBJECTS) -Lminilibx_opengl_20191021 -lmlx -Llibft -lft \
+	gcc -o $@ $(OBJECTS) -Lminilibx_opengl -lmlx -Llibft -lft \
 		-framework OpenGL -framework AppKit -lz
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $?
 
 minilibx:
-	make -C minilibx_opengl_20191021
+	make -C minilibx_opengl
 
 libft:
 	make -C libft
 
 clean:
 	rm -f $(OBJECTS)
-	make -C minilibx_opengl_20191021 clean
+	make -C minilibx_opengl clean
 	make -C libft clean
 
 fclean: clean

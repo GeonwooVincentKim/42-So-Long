@@ -6,139 +6,85 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 22:26:15 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/06/26 16:29:32 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/03 19:58:52 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
+
 # define SO_LONG_H
 
-# include <mlx.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include <unistd.h>
+# define BUFFER_SIZE 42
+# define ESC 53
+# define LEFT 0
+# define RIGHT 2
+# define DOWN 1
+# define UP 13
 
-# if defined(__APPLE__) && defined(__MACH__)
-#  define ADVANCE 13
-#  define BACK 1
-#  define RIGHT 2
-#  define LEFT 0
-#  define ESC 53
-#  define RED_BUTTON 79
-#  define CLOSERED 17
-# else
-#  define ADVANCE 119
-#  define BACK 115
-#  define RIGHT 100
-#  define LEFT 97
-#  define ESC 65307
-#  define RED_BUTTON 79
-#  define CLOSERED 33
-# endif
-
-typedef struct s_long
+typedef struct s_xy
 {
-	char			**map;
-	int				xscreen;
-	int				yscreen;
-	int				x;
-	int				y;
-	int				oldx;
-	int				dropbomb;
-	int				collectibleparse;
-	int				exitparse;
-	int				player_x;
-	int				player_y;
-	int				lastplayer_x;
-	int				lastplayer_y;
-	int				collectible;
-	int				collectibletotal;
-	int				move;
-	int				playerset;
-	int				exitset;
-	int				collectibleset;
+	int	x;
+	int	y;
+}	t_xy;
 
-	char			*pxl;
-	int				bpp;
-	int				s_line;
-	double			casetotal;
-	double			casein;
-	int				ed;
-	int				spritebomb;
-	void			*mlx_ptr;
-	void			*mlx_win;
-	void			*img;
-	int				keyboard[70000];
-	int				maptofree;
+typedef struct s_player
+{
+	int		c;
+	int		moves;
+	t_xy	attempt;
+	t_xy	actual;
+}	t_player;
 
-	int				bpp_text[16];
-	int				sline_text[16];
-	int				ed_text[16];
-	char			*ptr_text[16];
-	void			*text[16];
-	int				widthtext[16];
-	int				heighttext[16];
-	int				actualtext;
-	unsigned int	color;
-}					t_long;
+typedef struct s_enemy
+{
+	t_xy	actual;
+}	t_enemy;
 
-char	*recurs(int depth, int *ret, int fd);
-int		get_next_line(int fd, char **out);
-size_t	ft_strlen(const char *s);
+typedef struct s_map
+{
+	int		rows;
+	int		cols;
+	int		c;
+	int		e;
+	int		p;
+	int		v;
+	int		diff_cols;
+	int		px;
+	char	**lines;
+}	t_map;
 
-// load textures
-int		load_texture_2(t_long *sl);
-int		loadtexture3(t_long *sl);
+typedef struct s_game
+{
+	char		**lines;
+	void		*o;
+	void		*c;
+	void		*c2;
+	void		*e;
+	void		*p;
+	void		*p2;
+	void		*p3;
+	void		*v;
+	void		*mlx;
+	void		*win;
+	t_player	player;
+	t_enemy		*enemies;
+	t_map		map;
+}	t_game;
 
-// map & render
-int		stockmap(t_long *sl, char *argv);
-int		mallocmap(t_long *sl);
-int		render_calcul(t_long *sl);
-int		render(t_long *sl);
+/* get_next_line.c */
+char	*get_next_line(int fd);
 
-int		get_x_and_y(t_long *sl, char *argv);
-int		visible(t_long *sl);
-int		fixbomb(t_long *sl);
-char	*ft_itoa(int n);
-int		gettextnumbomb(t_long *sl);
-char	*ft_strcpy(char *dest, char *src);
-int		parsing(t_long *sl, char *argv);
-size_t	ft_power(int n, int p);
-void	floodandfill2(t_long *sl, int mapy, int mapx);
-int		checkmap(t_long *sl);
-int		numberblank(char *str);
-int		get_next_line(int fd, char **line);
-int		printtexture(t_long *sl, int starter_X, int starter_Y);
-int		showerror(t_long *sl, char *str);
-int		check_cube_extension(char *str, t_long *sl);
-int		pos_player(t_long *sl);
-void	ft_putstr(char *str);
-int		initplayer(t_long *sl);
-int		loadtexture(t_long *sl);
-int		gettextnum(int X, int Y, t_long *sl);
-int		moveplayer(int nb, t_long *sl);
-int		checkaremove(t_long *sl);
-int		stockline(t_long *sl, char *line, int nb);
-int		checkifgood(char c);
-void	ft_putchar(char c);
-char	replacechar(char c);
-void	ft_putnbr(int nb);
-int		checkthewall(t_long *sl);
-int		flood_and_fill(t_long *sl, int mapy, int mapx);
-int		displaymove(t_long *sl, int nb);
-int		freemap(t_long *sl);
-void	resetkeyboard(t_long *sl);
-int		checkaround(int mapx, int mapy, t_long *sl);
-int		ft_key_hit(int keycode, t_long *sl);
-int		ft_key_release(int keycode, t_long *sl);
-int		ft_keyboard(t_long *display);
-int		closebyredbutton(t_long *sl);
-int		freeandexit(t_long *sl);
-int		display(t_long *sl);
-int		go_hooking(t_long *sl);
-int		createwindow(t_long *sl);
-int		key_loop(t_long *sl);
-int		put_pxl(t_long *sl, int x, int y, unsigned int c);
-int		initvar(t_long *sl);
+/* validate.c */
+int		is_valid_map(char *file, t_map *map);
+
+/* setup.c */
+void	init_g(t_game *g);
+void	init_lines_and_images(char *file, t_game *g);
+void	init_enemies(t_game *g);
+void	put_images(t_game *g);
+
+/* gameplay.c */
+void	end_game(t_game *g);
+void	move(t_game *g);
 
 #endif
