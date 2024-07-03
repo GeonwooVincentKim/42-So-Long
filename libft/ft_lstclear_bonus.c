@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 01:22:20 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 20:16:36 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/04 02:45:21 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	}
 }
 
-static void	del(void *content)
-{
-	free(content);
-}
+// static void	del(void *content)
+// {
+// 	free(content);
+// }
 
 // int main()
 // {

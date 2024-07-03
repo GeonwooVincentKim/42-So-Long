@@ -2,22 +2,29 @@ NAME = so_long
 SOURCES = so_long.c get_next_line.c validate.c setup_game.c play_game.c
 OBJECTS = $(SOURCES:.c=.o)
 
-SOURCES_BONUS = so_long_bonus.c get_next_line_bonus.c validate_bonus.c setup_game_bonus.c play_game_bonus.c
-OBJECTS = $(SOURCES_BONUS:.c=.o)
+SOURCES_BONUS = ./bonus/so_long_bonus.c ./bonus/get_next_line_bonus.c  \
+				./bonus/validate_bonus.c ./bonus/setup_game_bonus.c  \
+				./bonus/play_game_bonus.c
+SOURCE_OBJECTS = $(SOURCES_BONUS:.c=.o)
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g
 
+ifdef WITH_BONUS
+	OBJECTS = $(SOURCE_OBJECTS)
+endif
+
 all: $(NAME)
 
-bonus: $(NAME)
+bonus: 
+	make WITH_BONUS=1
 
-$(NAME): $(OBJECTS) minilibx libft
+$(NAME): libft $(OBJECTS) minilibx
 	gcc -o $@ $(OBJECTS) -Lminilibx_opengl -lmlx -Llibft -lft \
 		-framework OpenGL -framework AppKit -lz -g
 
 %.o: %.c
-	$(CC) -c -g $?
+	$(CC) -c -g $? -o $@
 
 minilibx:
 	make -C minilibx_opengl
@@ -26,7 +33,7 @@ libft:
 	make -C libft
 
 clean:
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) $(SOURCE_OBJECTS)
 	make -C minilibx_opengl clean
 	make -C libft clean
 
