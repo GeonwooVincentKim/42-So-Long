@@ -6,11 +6,11 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:18:58 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 19:54:38 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/03 20:32:49 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include "so_long.h"
 #include "minilibx_opengl/mlx.h"
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 	{
 		g.mlx = mlx_init();
 		g.win = mlx_new_window(g.mlx, g.map.cols * g.map.px, \
-				g.map.rows * g.map.px, "so_long - hbaddrul");
+				g.map.rows * g.map.px, "so_long");
 		init_lines_and_images(argv[1], &g);
 		init_enemies(&g);
 		put_images(&g);
