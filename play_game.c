@@ -6,14 +6,14 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:16:56 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/05/30 02:17:40 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/03 20:42:10 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "so_long.h"
-#include "mlx.h"
+#include "minilibx_opengl/mlx.h"
 #include "libft/libft.h"
 
 static void	move_enemy(t_game *g)

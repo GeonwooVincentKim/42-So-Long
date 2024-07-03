@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:13:34 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 20:00:25 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/03 20:42:03 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,94 +15,75 @@
 #include "so_long.h"
 #include "libft/libft.h"
 
-static void	buf_free(char **buf)
+static void	gnl_read(int fd, char *buf, char **str)
 {
-	if (*buf != NULL)
-	{
-		free(*buf);
-		buf = NULL;
-	}
-}
+	int		i;
+	char	*tmp;
 
-// Get a line from a buffer or string, such as might 
-// be used in reading lines from a file one at a time
-static char	*get_next_line_process(int num_of_line, char **buffer)
-{
-	char	*result;
-	char	*str_tmp;
-
-	str_tmp = NULL;
-	if (num_of_line <= 0)
+	if (!*str || !ft_strchr(*str, '\n'))
 	{
-		if (**buffer == '\0')
+		i = read(fd, buf, BUFFER_SIZE);
+		while (i > 0)
 		{
-			free(*buffer);
-			*buffer = NULL;
-			return (NULL);
+			buf[i] = 0;
+			if (!*str)
+				*str = ft_strdup(buf);
+			else
+			{
+				tmp = *str;
+				*str = ft_strjoin(*str, buf);
+				free(tmp);
+			}
+			if (ft_strchr(buf, '\n'))
+				break ;
+			i = read(fd, buf, BUFFER_SIZE);
 		}
-		result = *buffer;
-		*buffer = NULL;
-		return (result);
 	}
-	str_tmp = ft_substr(*buffer, num_of_line, BUFFER_SIZE);
-	result = *buffer;
-	result[num_of_line] = 0;
-	*buffer = str_tmp;
-	return (result);
+	free(buf);
 }
 
-// Read data from the file and append it to partial content
-// size_t -> count of bytes, sizeof() operator, range [0, SIZE_MAX]
-// ssize_t -> count of bytes an error indication, range [-1, SSIZE_MAX];
-// SSIZE_MAX = LONG_MAX, SIZE_MAX = UINTPTR_MAX
-
-// Read a line of text from a File Descriptor into a buffer
-// flides -> File Descriptor
-// **buffer -> Store the dynamically allocated to buffer
-// *read_return -> A temporary buffer, store the charactes 
-// read from the flides in each iteration
-static char	*read_from_file(int flides, char **buffer, char *read_buffer)
+static char	*gnl_process(int fd, char **str)
 {
-	ssize_t	count_bytes;
-	char	*str_tmp;
-	char	*new_line;
+	int		i;
+	int		j;
+	char	*ret;
+	char	*tmp;
 
-	new_line = ft_strchr(*buffer, '\n');
-	str_tmp = NULL;
-	count_bytes = 0;
-	while (new_line == NULL)
+	if (!*str)
 	{
-		count_bytes = read(flides, read_buffer, BUFFER_SIZE);
-		if (count_bytes <= 0)
-			return (get_next_line_process(count_bytes, buffer));
-		read_buffer[count_bytes] = 0;
-		str_tmp = ft_strjoin(*buffer, read_buffer);
-		buf_free(buffer);
-		*buffer = str_tmp;
-		new_line = ft_strchr(*buffer, '\n');
+		close(fd);
+		return (0);
 	}
-	return (get_next_line_process(new_line - *buffer + 1, buffer));
+	if (!ft_strchr(*str, '\n'))
+	{
+		ret = ft_strdup(*str);
+		free(*str);
+		*str = 0;
+		return (ret);
+	}
+	i = ft_strlen(*str);
+	j = ft_strlen(ft_strchr(*str, '\n'));
+	ret = ft_substr(*str, 0, i - j);
+	tmp = *str;
+	*str = ft_substr(ft_strchr(*str, '\n'), 1, j - 1);
+	free(tmp);
+	return (ret);
 }
 
-// Get the next line from the file descriptor
-// basin = たらい
-// If
-// fd < 0 || BUFFER_SIZE <= 0 || fd > MAX_FILE_DESCRIPTOR
-// not exist, the Segmentation Error could be occured
 char	*get_next_line(int fd)
 {
-	static char	*basin_buffer[MAX_FILE_DESCRIPTOR + 1];
-	char		*read_line;
-	char		*result;
+	char		*buf;
+	static char	*str;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > MAX_FILE_DESCRIPTOR)
-		return (NULL);
-	read_line = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
-	if (read_line == NULL)
-		return (NULL);
-	if (!basin_buffer[fd])
-		basin_buffer[fd] = ft_strdup("");
-	result = read_from_file(fd, &basin_buffer[fd], read_line);
-	buf_free(&read_line);
-	return (result);
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
+		return (0);
+	if (fd == -1 || read(fd, buf, 0) == -1)
+	{
+		free(buf);
+		close(fd);
+		return (0);
+	}
+	gnl_read(fd, buf, &str);
+	return (gnl_process(fd, &str));
 }

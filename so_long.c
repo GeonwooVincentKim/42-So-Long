@@ -6,11 +6,11 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:18:58 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 19:54:38 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/03 20:44:36 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include "so_long.h"
 #include "minilibx_opengl/mlx.h"
@@ -69,6 +69,8 @@ int	main(int argc, char **argv)
 		mlx_key_hook(g.win, key_hook, &g);
 		mlx_loop(g.mlx);
 	}
+	else if (argc == 2 && ft_atoi(argv[1]))
+		ft_putendl_fd("Error", 2);
 	else
 		ft_putendl_fd("Error", 2);
 	return (0);
