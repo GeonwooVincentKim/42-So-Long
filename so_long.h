@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 22:26:15 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 19:58:52 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/07/03 20:06:30 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # define RIGHT 2
 # define DOWN 1
 # define UP 13
+
+# ifndef MAX_FILE_DESCRIPTOR
+#  define MAX_FILE_DESCRIPTOR 256
+# endif
 
 typedef struct s_xy
 {
