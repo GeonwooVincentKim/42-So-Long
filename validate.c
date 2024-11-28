@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 19:03:42 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/03 22:06:36 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:43:42 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include <stdlib.h>
 #include "so_long.h"
 #include "libft/libft.h"
+
+size_t	ft_strlen(const char *str);
+char	*ft_strrchr(const char *str, int c);
 
 static int	char_count(char *line, int c)
 {

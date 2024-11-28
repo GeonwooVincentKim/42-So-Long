@@ -6,14 +6,14 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:17:22 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/04 02:19:21 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:51:44 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <stdlib.h>
 #include "so_long_bonus.h"
-#include "../minilibx_opengl/mlx.h"
+#include "../minilibx-linux/mlx.h"
 
 static int	update_p_or_v(t_game *g, int i, int j, int k)
 {

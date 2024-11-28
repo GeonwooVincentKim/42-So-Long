@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   play_game.c                                        :+:      :+:    :+:   */
+/*   play_game_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:16:56 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/04 02:19:28 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:50:52 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "so_long_bonus.h"
-#include "../minilibx_opengl/mlx.h"
+#include "../minilibx-linux/mlx.h"
 #include "../libft/libft.h"
 
 static void	move_enemy(t_game *g)

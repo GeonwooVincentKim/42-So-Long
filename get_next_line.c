@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:13:34 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/04 00:23:18 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:44:30 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 #include <unistd.h>
 #include "so_long.h"
 #include "libft/libft.h"
+
+char	*ft_strrchr(const char *str, int c);
+char	*ft_strdup(const char *s);
+char	*ft_substr(char const *str, unsigned int start, size_t len);
+size_t	ft_strlen(const char *str);
 
 static void	gnl_read(int fd, char *buf, char **str)
 {

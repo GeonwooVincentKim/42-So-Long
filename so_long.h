@@ -6,7 +6,7 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 22:26:15 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/04 01:07:33 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:49:07 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 # define SO_LONG_H
 
 # define BUFFER_SIZE 42
-# define ESC 53
-# define LEFT 0
-# define RIGHT 2
-# define DOWN 1
-# define UP 13
+# define ESC 65307  // Escape key in Linux
+# define LEFT 65361 // Left arrow key
+# define RIGHT 65363 // Right arrow key
+# define DOWN 65364 // Down arrow key
+# define UP 65362 // Up arrow key
+
 
 # ifndef MAX_FILE_DESCRIPTOR
 #  define MAX_FILE_DESCRIPTOR 256

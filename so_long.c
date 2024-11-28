@@ -6,14 +6,14 @@
 /*   By: geonwkim <geonwkim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 02:18:58 by geonwkim          #+#    #+#             */
-/*   Updated: 2024/07/04 15:47:09 by geonwkim         ###   ########.fr       */
+/*   Updated: 2024/11/28 21:46:44 by geonwkim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include "so_long.h"
-#include "minilibx_opengl/mlx.h"
+#include "minilibx-linux/mlx.h"
 #include "libft/libft.h"
 
 static int	red_circle_pressed(t_game *g)
